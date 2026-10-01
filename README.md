@@ -21,7 +21,7 @@ npm run build
 npm run preview
 ```
 
-La carpeta `dist` contiene las tres páginas, módulos locales y el Excel distribuido por el proyecto. Sirve el contenido mediante HTTP, no con doble clic a un archivo HTML.
+El build (`build.mjs`) empaqueta cada página como un solo archivo HTML autocontenido (JS y CSS inline, sin chunks externos), además de las fuentes locales y el Excel. La versión construida se ve igual que el dev tanto si se sirve por HTTP (`npm run preview`) como si se abre directamente el HTML desde disco. Los enlaces al Excel usan ruta relativa para funcionar desde cualquier página.
 
 ## Páginas y contenido
 
@@ -37,7 +37,7 @@ Las cantidades de producción y las capacidades proceden de la información del 
 
 ## Excel
 
-Vite publica el libro existente en `/Excel/InvOperativa_FINAL.xlsx` y lo incluye en `dist`. Los enlaces usan una ruta absoluta desde la raíz del sitio para abrirse desde cualquier página. El comportamiento (abrir o descargar) depende del navegador y del sistema operativo.
+Vite publica el libro existente en `Excel/InvOperativa_FINAL.xlsx` y lo incluye en `dist`. Los enlaces usan una ruta relativa desde la página para funcionar tanto servidos por HTTP como abiertos desde disco. El comportamiento (abrir o descargar) depende del navegador y del sistema operativo.
 
 ## Accesibilidad
 
